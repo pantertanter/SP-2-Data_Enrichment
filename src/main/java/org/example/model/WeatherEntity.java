@@ -21,7 +21,7 @@ public class WeatherEntity {
 
     public WeatherEntity(WeatherDTO weatherDTO, HumidityDTO humidityDTO) {
 
-        
+
 
     }
 }
