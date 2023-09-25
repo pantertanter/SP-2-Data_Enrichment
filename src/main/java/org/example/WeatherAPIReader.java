@@ -8,13 +8,13 @@ import java.io.IOException;
 
 public class WeatherAPIReader {
 
-    public static QualityDTO getHillerødQuality() throws IOException, InterruptedException {
+    public static String getHillerødQuality() throws IOException, InterruptedException {
 
         String weatherJSON = HttpUtils.fetchData();
 
         Gson gson = new Gson();
 
-        return gson.fromJson(weatherJSON, QualityDTO.class);
+        return weatherJSON;
 
     }
 

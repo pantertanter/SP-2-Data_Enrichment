@@ -1,5 +1,7 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.model.HumidityDTO;
 import org.example.model.QualityDTO;
 import org.example.model.WeatherDTO;
@@ -24,8 +26,8 @@ public class Main {
         List<WeatherDTO> dtos = new ArrayList<>();
 
 
-        for(Element e : elements){
-            if(e.select(".weather_day_date").isEmpty()){
+        for (Element e : elements) {
+            if (e.select(".weather_day_date").isEmpty()) {
                 break;
             }
             System.out.println(e.text());
@@ -34,15 +36,26 @@ public class Main {
             String rain = e.select(".weather_day_mm").text();
             String temp = e.select(".fourteen_day_wrap").text();
 
-            dtos.add(new WeatherDTO(day,date,rain, temp));
+            dtos.add(new WeatherDTO(day, date, rain, temp));
 
         }
 
         dtos.forEach(System.out::println);
 
-        QualityDTO weatherQ = WeatherAPIReader.getHillerødQuality();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        System.out.println(weatherQ);
 
+        try {
+            String weatherQ = WeatherAPIReader.getHillerødQuality();
+
+            QualityDTO qualityDTO = objectMapper.readValue(weatherQ, QualityDTO.class);
+
+            System.out.println("o3: " + qualityDTO.getO3());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

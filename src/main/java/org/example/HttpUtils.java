@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class HttpUtils {
     public static String fetchData() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://air-quality.p.rapidapi.com/history/airquality?lon=12.30081&lat=55.92791"))
+                .uri(URI.create("https://air-quality.p.rapidapi.com/current/airquality?lon=-73.00597&lat=40.71427"))
                 .header("X-RapidAPI-Key", "10d68c0861msha8393708e95ba95p1e237fjsnbb0ad714367f")
                 .header("X-RapidAPI-Host", "air-quality.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
