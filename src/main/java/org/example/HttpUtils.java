@@ -2,13 +2,31 @@ package org.example;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class HttpUtils {
-    public static String fetchData(String _url) throws IOException {
-        URL url = new URL(_url);
+    public static String fetchData() throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://air-quality.p.rapidapi.com/history/airquality?lon=12.30081&lat=55.92791"))
+                .header("X-RapidAPI-Key", "10d68c0861msha8393708e95ba95p1e237fjsnbb0ad714367f")
+                .header("X-RapidAPI-Host", "air-quality.p.rapidapi.com")
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+
+        return response.body();
+
+    }
+}
+        /*URL url = new URL(_url);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.
         con.setRequestMethod("GET");
         //con.setRequestProperty("Accept", "application/json;charset=UTF-8");
         con.setRequestProperty("Accept", "application/json");
@@ -20,6 +38,5 @@ public class HttpUtils {
             jsonStr = scan.nextLine();
         }
         scan.close();
-        return jsonStr;
-    }
-}
+        return jsonStr;*/
+

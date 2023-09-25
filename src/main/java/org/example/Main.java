@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.model.HumidityDTO;
+import org.example.model.QualityDTO;
 import org.example.model.WeatherDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         String url = "https://www.vejreti.com/europe/denmark?page=14";
 
@@ -39,7 +40,9 @@ public class Main {
 
         dtos.forEach(System.out::println);
 
+        QualityDTO weatherQ = WeatherAPIReader.getHillerødQuality();
 
+        System.out.println(weatherQ);
 
     }
 }
