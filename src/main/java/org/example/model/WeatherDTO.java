@@ -1,11 +1,15 @@
 package org.example.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.time.LocalDate;
 
+@Getter
 @ToString
+@AllArgsConstructor
 public class WeatherDTO {
 
     private String day;
@@ -13,10 +17,4 @@ public class WeatherDTO {
     private String rain;
     private String temp;
 
-    public WeatherDTO(String day, String date, String rain, String temp) {
-        this.day = day;
-        this.date = date;
-        this.rain = rain;
-        this.temp = temp;
-    }
 }

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.model.HumidityDTO;
 import org.example.model.WeatherDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,6 +27,7 @@ public class Main {
             if(e.select(".weather_day_date").isEmpty()){
                 break;
             }
+            System.out.println(e.text());
             String day = e.select(".weather_day_date").text();
             String date = e.select(".weather_date_month").text();
             String rain = e.select(".weather_day_mm").text();
@@ -36,6 +38,7 @@ public class Main {
         }
 
         dtos.forEach(System.out::println);
+
 
 
     }
