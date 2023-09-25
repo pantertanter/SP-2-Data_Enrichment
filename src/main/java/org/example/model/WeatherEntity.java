@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
+@NoArgsConstructor
 public class WeatherEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
