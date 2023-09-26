@@ -47,38 +47,61 @@ class WeatherDAOTest {
 
     @Test
     void getWeather() {
+        assertNotNull(dao.getWeather(1));
     }
 
     @Test
     void getAllWeather() {
+        assertEquals(dao.getAllWeather().size(), 14);
     }
 
     @Test
     void updateWeather() {
+        WeatherEntity weatherEntity = dao.getWeather(1);
+        weatherEntity.setTemp("100");
+        dao.updateWeather(weatherEntity);
+        assertEquals(dao.getWeather(1).getTemp(), "100");
     }
 
     @Test
     void deleteWeather() {
+        dao.deleteWeather(1);
+        assertNull(dao.getWeather(1));
     }
 
     @Test
     void createWeather() {
+        WeatherEntity weatherEntity = new WeatherEntity();
+        weatherEntity.setTemp("100");
+        dao.createWeather(weatherEntity);
+        assertEquals(dao.getWeather(15).getTemp(), "100");
     }
 
     @Test
     void createWeatherToday() {
+        WeatherTodayEntity wte = new WeatherTodayEntity();
+        wte.setTemp("100");
+        dao.createWeatherToday(wte);
+        assertEquals(dao.getWeatherToday(2).getTemp(), "100");
     }
 
     @Test
     void updateWeatherToday() {
+        WeatherTodayEntity wte = dao.getWeatherToday(1);
+        wte.setTemp("100");
+        dao.updateWeatherToday(wte);
+        assertEquals(dao.getWeatherToday(1).getTemp(), "100");
     }
 
     @Test
     void deleteWeatherToday() {
+        dao.deleteWeatherToday(1);
+        assertNull(dao.getWeatherToday(1));
     }
 
     @Test
     void getWeatherToday() {
+        assertNotNull(dao.getWeatherToday(1));
     }
 
 }

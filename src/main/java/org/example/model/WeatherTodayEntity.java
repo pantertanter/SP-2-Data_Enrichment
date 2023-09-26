@@ -4,7 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -16,6 +18,8 @@ public class WeatherTodayEntity {
     private Integer id;
     private LocalDate date = LocalDate.now();
     private String rain;
+    @Getter
+    @Setter
     private String temp;
     private String skyText;
     private int humidity;

@@ -1,7 +1,9 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -16,6 +18,8 @@ public class WeatherEntity {
 
     private LocalDate date;
     private String rain;
+    @Getter
+    @Setter
     private String temp;
 
     public WeatherEntity(WeatherDTO weatherDTO) {
