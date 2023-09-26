@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.config.WeatherAPIReader;
 import org.example.model.HumidityDTO;
 import org.example.model.WeatherDTO;
 import org.jsoup.Jsoup;
