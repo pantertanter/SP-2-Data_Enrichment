@@ -12,10 +12,22 @@ import java.util.List;
 
 public class ScrapeWeather {
 
+    public static void main(String[] args) throws IOException {
+        scrapeVejreti();
+    }
+
     public static List<WeatherDTO> scrapeVejreti() throws IOException {
         String url = "https://www.vejreti.com/europe/denmark?page=14";
 
-        Document doc = Jsoup.connect(url).get();
+        Document doc = Jsoup.connect(url)
+                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                                "AppleWebKit/537.36 (KHTML, like Gecko) " +
+                                "Chrome/91.0.4472.124 Safari/537.36")
+//                        .referrer("https://www.google.com/")
+                .header("accept", "text/html,application/xhtml+xml;charset=UTF-8")
+                                .get();
+
+        System.out.println(doc);
 
         Elements elements = doc.select(".weather_day_box");
 

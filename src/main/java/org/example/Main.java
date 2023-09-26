@@ -20,11 +20,13 @@ public class Main {
 
         List<WeatherDTO> weatherDTOs = ScrapeWeather.scrapeVejreti();
 
+        weatherDTOs.forEach(System.out::println);
+
         HumidityDTO humidityDTO = WeatherAPIReader.getHumidityQuality();
 
         WeatherTodayEntity weatherTodayEntity = new WeatherTodayEntity(weatherDTOs.get(0), humidityDTO);
 
-        System.out.println(weatherTodayEntity);
+//        System.out.println(weatherTodayEntity);
 
 
     }
