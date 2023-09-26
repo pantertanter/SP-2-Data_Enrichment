@@ -19,8 +19,6 @@ public class WeatherAPIReader {
 
         String weatherJSON = HttpUtils.fetchData("https://vejr.eu/api.php?location=K%C3%B8benhavn&degree=C");
 
-        System.out.println(weatherJSON);
-
         return gson.fromJson(weatherJSON, HumidityDTO.class);
 
     }
