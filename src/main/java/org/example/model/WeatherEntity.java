@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
+@NoArgsConstructor
 public class WeatherEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +22,11 @@ public class WeatherEntity {
     private String windText;
 
     public WeatherEntity(WeatherDTO weatherDTO, HumidityDTO humidityDTO) {
-
-        
-
+        //this.date = weatherDTO.getDate(); TODO:
+        this.rain = weatherDTO.getRain();
+        this.temp = weatherDTO.getTemp();
+        this.skyText = humidityDTO.getCurrentData().getSkyText();
+        this.humidity = humidityDTO.getCurrentData().getHumidity();
+        this.windText = humidityDTO.getCurrentData().getWindText();
     }
 }
