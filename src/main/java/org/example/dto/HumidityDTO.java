@@ -1,4 +1,4 @@
-package org.example.model;
+package org.example.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,10 +12,8 @@ public class HumidityDTO {
     private String LocationName;
     private CurrentData CurrentData;
 
-
     @Getter
-    static class CurrentData {
-
+    public static class CurrentData {
         private int temperature;
         private String skyText;
         private int humidity;

@@ -62,8 +62,7 @@ public class WeatherDAO {
             }
         }
 
-            // WeatherTodayEntity
-
+        // WeatherTodayEntity
         public void createWeatherToday(WeatherTodayEntity weatherToday) {
             try (EntityManager em = emf.createEntityManager()) {
                 em.getTransaction().begin();

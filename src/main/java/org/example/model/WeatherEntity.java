@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.dto.WeatherDTO;
 
 import java.time.LocalDate;
 
@@ -15,7 +16,6 @@ public class WeatherEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private LocalDate date;
     private String rain;
     @Getter
@@ -23,11 +23,13 @@ public class WeatherEntity {
     private String temp;
 
     public WeatherEntity(WeatherDTO weatherDTO) {
+
         String dayOfMonth = weatherDTO.getDate().substring(0,weatherDTO.getDate().length()-3);
         dayOfMonth.replace(".","");
         int dayOfMonthInt = Integer.parseInt(dayOfMonth);
 
         String month = weatherDTO.getDate().substring(weatherDTO.getDate().length()-3);
+
         int monthInt = 0;
         switch (month) {
             case "jan":
@@ -71,15 +73,8 @@ public class WeatherEntity {
                 break;
         }
 
-
         this.date = LocalDate.of(LocalDate.now().getYear(),monthInt,dayOfMonthInt);
         this.rain = weatherDTO.getRain();
         this.temp = weatherDTO.getTemp();
     }
 }
-
-// convert String day and date into LocalDate date
-
-
-
-

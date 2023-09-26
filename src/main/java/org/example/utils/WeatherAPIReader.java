@@ -1,19 +1,15 @@
-package org.example.config;
+package org.example.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.example.config.HttpUtils;
-import org.example.model.HumidityDTO;
+import org.example.dto.HumidityDTO;
 
 import java.io.IOException;
 
 public class WeatherAPIReader {
-
-
     private static final Gson gson = new GsonBuilder()
             .setPrettyPrinting()
             .create();
-
 
     public static HumidityDTO getHumidityQuality() throws IOException, InterruptedException {
 
@@ -22,6 +18,4 @@ public class WeatherAPIReader {
         return gson.fromJson(weatherJSON, HumidityDTO.class);
 
     }
-
-
 }

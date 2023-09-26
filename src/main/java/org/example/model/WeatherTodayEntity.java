@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.dto.HumidityDTO;
+import org.example.dto.WeatherDTO;
 
 import java.time.LocalDate;
 

@@ -1,10 +1,10 @@
 package org.example.dao;
 
 import org.example.config.HibernateConfig;
-import org.example.config.ScrapeWeather;
-import org.example.config.WeatherAPIReader;
-import org.example.model.HumidityDTO;
-import org.example.model.WeatherDTO;
+import org.example.utils.ScrapeWeather;
+import org.example.utils.WeatherAPIReader;
+import org.example.dto.HumidityDTO;
+import org.example.dto.WeatherDTO;
 import org.example.model.WeatherEntity;
 import org.example.model.WeatherTodayEntity;
 import org.junit.jupiter.api.AfterEach;

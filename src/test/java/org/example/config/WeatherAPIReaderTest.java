@@ -1,6 +1,7 @@
 package org.example.config;
 
-import org.example.model.HumidityDTO;
+import org.example.dto.HumidityDTO;
+import org.example.utils.WeatherAPIReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

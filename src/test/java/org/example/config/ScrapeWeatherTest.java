@@ -1,6 +1,7 @@
 package org.example.config;
 
-import org.example.model.WeatherDTO;
+import org.example.dto.WeatherDTO;
+import org.example.utils.ScrapeWeather;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
