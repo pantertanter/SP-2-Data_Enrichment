@@ -22,8 +22,11 @@ public class WeatherEntity {
     private String windText;
 
     public WeatherEntity(WeatherDTO weatherDTO, HumidityDTO humidityDTO) {
-
-
-
+        //this.date = weatherDTO.getDate(); TODO:
+        this.rain = weatherDTO.getRain();
+        this.temp = weatherDTO.getTemp();
+        this.skyText = humidityDTO.getCurrentData().getSkyText();
+        this.humidity = humidityDTO.getCurrentData().getHumidity();
+        this.windText = humidityDTO.getCurrentData().getWindText();
     }
 }
