@@ -25,7 +25,9 @@ public class WeatherEntity {
     public WeatherEntity(WeatherDTO weatherDTO) {
 
         String dayOfMonth = weatherDTO.getDate().substring(0,weatherDTO.getDate().length()-3);
-        dayOfMonth.replace(".","");
+        dayOfMonth = dayOfMonth.replace(".","");
+        dayOfMonth = dayOfMonth.replace(" ","");
+
         int dayOfMonthInt = Integer.parseInt(dayOfMonth);
 
         String month = weatherDTO.getDate().substring(weatherDTO.getDate().length()-3);

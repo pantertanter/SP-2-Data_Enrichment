@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.dao.WeatherDAO;
 import org.example.utils.ScrapeWeather;
 import org.example.utils.WeatherAPIReader;
 import org.example.dto.HumidityDTO;
@@ -21,6 +22,8 @@ public class Main {
         WeatherTodayEntity weatherTodayEntity = new WeatherTodayEntity(weatherDTOs.get(0), humidityDTO);
 
         System.out.println(weatherTodayEntity);
+
+
 
 
     }

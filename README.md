@@ -1,4 +1,4 @@
-### Weather App
+### Weather App - Data Enrichment - Group B6 - SP 2
 
 We have created a weather app that takes data web scraping https://www.vejreti.com/europe/denmark?page=14 for data,
 about the weather in Denmark and casts it into dto's and entities through loops, which persist of forecast data for 14 days at a time.
@@ -19,6 +19,9 @@ The site we scrape has blocked our ip though.
 [Site we scrape](https://www.vejreti.com/europe/denmark?page=14)
 
 [API for enrichment](https://vejr.eu/api.php?location=K%C3%B8benhavn&degree=C)
+
+![EER diagram](EER.png)
+
 
 ![alt text](https://static1.bigstockphoto.com/8/6/3/large1500/368552620.jpg)
 

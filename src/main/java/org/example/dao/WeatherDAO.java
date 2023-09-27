@@ -6,7 +6,9 @@ import jakarta.persistence.TypedQuery;
 import org.example.model.WeatherEntity;
 import org.example.model.WeatherTodayEntity;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WeatherDAO {
 
@@ -96,4 +98,18 @@ public class WeatherDAO {
             }
         }
 
-    }
+//        Not working
+        public List<WeatherEntity> allWeatherSortedByTemp() {
+            try (EntityManager em = emf.createEntityManager()) {
+                TypedQuery<WeatherEntity> query = em.createQuery("SELECT w FROM WeatherEntity w", WeatherEntity.class);
+                List<WeatherEntity> weather = query.getResultList();
+
+                List<WeatherEntity> weatherSortedByTemp = weather.stream()
+                        .sorted(Comparator.comparing(WeatherEntity::getTemp))
+                        .collect(Collectors.toList());
+                weatherSortedByTemp.forEach(System.out::println);
+            };
+
+            return allWeatherSortedByTemp();
+        }
+}

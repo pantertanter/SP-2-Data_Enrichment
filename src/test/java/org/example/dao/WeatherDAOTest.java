@@ -7,11 +7,10 @@ import org.example.dto.HumidityDTO;
 import org.example.dto.WeatherDTO;
 import org.example.model.WeatherEntity;
 import org.example.model.WeatherTodayEntity;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,10 +21,25 @@ class WeatherDAOTest {
 
 
 
-    @BeforeEach
-    void setUp() throws IOException, InterruptedException {
-        List<WeatherDTO> weatherDTOList = ScrapeWeather.scrapeVejreti();
+    @BeforeAll
+    static void setUp() throws IOException, InterruptedException {
+//        List<WeatherDTO> weatherDTOList = ScrapeWeather.scrapeVejreti();
         HumidityDTO humidityDTO = WeatherAPIReader.getHumidityQuality();
+
+        List<WeatherDTO> weatherDTOList = new ArrayList<>();
+        weatherDTOList.add(new WeatherDTO("Onsdag", "27. sep", "0 mm", "20/15"));
+        weatherDTOList.add(new WeatherDTO("Torsdag", "28. sep", "0,5 mm", "18/14"));
+        weatherDTOList.add(new WeatherDTO("Fredag", "29. sep", "1 mm", "18/14"));
+        weatherDTOList.add(new WeatherDTO("Lørdag", "30. sep", "0 mm", "17/13"));
+        weatherDTOList.add(new WeatherDTO("Søndag", "1. okt", "0 mm", "16/13"));
+        weatherDTOList.add(new WeatherDTO("Mandag", "2. okt", "0,3 mm", "17/13"));
+        weatherDTOList.add(new WeatherDTO("Tirsdag", "3. okt", "2 mm", "15/12"));
+        weatherDTOList.add(new WeatherDTO("Onsdag", "4. okt", "3,8 mm", "16/14"));
+        weatherDTOList.add(new WeatherDTO("Torsdag", "5. okt", "0 mm", "15/12"));
+        weatherDTOList.add(new WeatherDTO("Fredag", "6. okt", "0 mm", "12/11"));
+        weatherDTOList.add(new WeatherDTO("Lørdag", "7. okt", "0 mm", "14/10"));
+        weatherDTOList.add(new WeatherDTO("Søndag", "8. okt", "0 mm", "13/9"));
+        weatherDTOList.add(new WeatherDTO("Mandag", "9. okt", "0 mm", "11/8"));
 
         WeatherTodayEntity weatherTodayEntity = new WeatherTodayEntity(weatherDTOList.get(0), humidityDTO);
 
@@ -52,7 +66,7 @@ class WeatherDAOTest {
 
     @Test
     void getAllWeather() {
-        assertEquals(dao.getAllWeather().size(), 14);
+        assertEquals(dao.getAllWeather().size(), 13);
     }
 
     @Test
@@ -74,7 +88,7 @@ class WeatherDAOTest {
         WeatherEntity weatherEntity = new WeatherEntity();
         weatherEntity.setTemp("100");
         dao.createWeather(weatherEntity);
-        assertEquals(dao.getWeather(15).getTemp(), "100");
+        assertEquals(dao.getWeather(14).getTemp(), "100");
     }
 
     @Test
@@ -104,4 +118,9 @@ class WeatherDAOTest {
         assertNotNull(dao.getWeatherToday(1));
     }
 
+    @Disabled
+    @Test
+    void allWeatherSortedByTemp() {
+        assertEquals(dao.allWeatherSortedByTemp().size(), 13);
+    }
 }
